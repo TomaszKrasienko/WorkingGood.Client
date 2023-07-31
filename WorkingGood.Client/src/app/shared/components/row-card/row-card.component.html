@@ -1,0 +1,30 @@
+<div class="row" style="background-color: aliceblue; border-radius: 5px; height: 100px; margin-top: 10px; margin-bottom: 10px">
+  <div class="row">
+    <h2>{{offer.title}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-2">
+          <i class="bi bi-building"></i> {{offer?.companyName}}
+        </div>
+        <div class="col-md-3">
+          <i class="bi bi-coin"></i> {{offer?.salaryRangeMin}} - {{offer?.salaryRangeMax}} PLN
+        </div>
+        <div class="col-md-3">
+          <i class="bi bi-person"></i> {{offer?.positionType}}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4" >
+      <ng-container *ngIf="!isForEmployees">
+        <button class="btn btn-outline-dark" style="margin-left: 10px; float: right">
+          APPLY
+        </button>
+        <button class="btn btn-outline-secondary" style="margin-left: 10px; float: right">
+          DETAILS
+        </button>
+      </ng-container>
+    </div>
+  </div>
+</div>
