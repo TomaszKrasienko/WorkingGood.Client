@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="text-center" style="background-color: dodgerblue">
+    <h1 style="margin: 20px; color: white">Offer details</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-10 offset-1" style="margin-top: 30px">
+      <div class="row">
+        <div class="col-md-12 col-lg-8 section-border">
+          <div class="row row-section">
+            <div class="col-md-4 text-center left-section-border">
+              <img class="company-logo-image" [src]="offer?.companyLogo" *ngIf="offer?.companyLogo">
+              <h2>{{offer?.companyName}}</h2>
+            </div>
+            <div class="col-md-8">
+              <h2>{{offer?.title}}</h2>
+            </div>
+          </div>
+          <div class="row row-section">
+            <h2>Required skills</h2>
+            <div class="row">
+              <ng-container *ngFor="let skill of getRequiredSkills()">
+                  <div class="col-md-4 col-lg-3 col-xl-2">
+                    <app-skill-view [skillModel]="skill">
+                    </app-skill-view>
+                  </div>
+              </ng-container>
+            </div>
+          </div>
+          <div class="row row-section">
+            <h2>Additional skills</h2>
+            <div class="row">
+              <ng-container *ngFor="let skill of getAdditionalSkills()">
+                <div class="col-md-4 col-lg-3 col-xl-2">
+                  <app-skill-view [skillModel]="skill">
+                  </app-skill-view>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <div class="row row-section">
+            <h2><b>Description: </b></h2>
+            <br>
+            <h2>{{offer?.description}}</h2>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <app-details-of-offer-summary [offer]="offer"></app-details-of-offer-summary>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

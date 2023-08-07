@@ -1,0 +1,12 @@
+.row-card{
+  background-color: aliceblue;
+  border-radius: 5px;
+  min-height: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.row-card-button{
+  margin-left: 10px;
+  float: right
+}

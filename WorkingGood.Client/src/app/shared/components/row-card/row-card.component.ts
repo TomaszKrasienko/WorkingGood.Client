@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {OfferIdentity} from "../../../core/models/offers/Offer.Identity";
+import {OfferIdentity} from "../../../core/models/offers/offer.Identity";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-row-card',
@@ -9,9 +10,12 @@ import {OfferIdentity} from "../../../core/models/offers/Offer.Identity";
 export class RowCardComponent implements OnInit {
   @Input() offer: OfferIdentity;
   @Input() isForEmployees: boolean;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  redirectToDetails(): void{
+    this.router.navigate([`offers/details/${this.offer.id}`]);
+  }
 }
