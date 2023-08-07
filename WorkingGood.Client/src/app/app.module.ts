@@ -58,8 +58,7 @@ import {NgxEditorModule} from "ngx-editor";
     MatIconModule,
     MatAutocompleteModule,
     MatTooltipModule,
-    MatSelectModule,
-    NgxEditorModule
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
