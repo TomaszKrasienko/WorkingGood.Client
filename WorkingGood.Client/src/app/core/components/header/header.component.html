@@ -1,18 +1,36 @@
 <mat-toolbar>
-  <span>Working Good</span>
-
-  <button
-    class="btn btn-outline-dark"
-    style="margin-left: 100px;"
-    routerLink="/offers/offersList"
-    routerLinkActive="btn-active">
-      Offers
-  </button>
-  <button
-    class="btn btn-outline-dark"
-    style="margin-left: 100px;"
-    routerLink="/offers/add"
-    routerLinkActive="btn-active">
-    Add Offers
-  </button>
+  <mat-toolbar-row>
+    <span>Working Good</span>
+    <div style="margin-left: 25px">
+      <button mat-button (click)="navigateToAllOffers()" *ngIf="false">Offers</button>
+      <button mat-button [matMenuTriggerFor]="offers">Offers</button>
+      <mat-menu #offers="matMenu">
+        <button mat-menu-item (click)="navigateToAllOffers()">All offers</button>
+        <button mat-menu-item (click)="navigateToCompanyOffers()">Company offers</button>
+        <button mat-menu-item (click)="navigateToAddOffer()">Add</button>
+      </mat-menu>
+    </div>
+    <div style="margin-left: 25px">
+      <button mat-button [matMenuTriggerFor]="companies">Companies</button>
+      <mat-menu #companies="matMenu">
+        <button mat-menu-item (click)="navigateToRegisterCompany()">Register company</button>
+        <button mat-menu-item (click)="navigateToCompaniesList()">Companies list</button>
+        <button mat-menu-item (click)="navigateToCompanyEdit()">Edit company</button>
+      </mat-menu>
+    </div>
+    <span class="example-spacer"></span>
+    <div>
+      <button mat-button [matMenuTriggerFor]="account">
+        <mat-icon>perm_identity</mat-icon>Sign-in
+      </button>
+      <mat-menu #account="matMenu">
+        <button mat-menu-item (click)="navigateToSignIn()">Sign-in</button>
+        <button mat-menu-item (click)="navigateToSignUp()">Sign-up</button>
+        <button mat-menu-item (click)="navigateToRegisterCompany()">Register company</button>
+        <button mat-menu-item (click)="navigateToChangePassword()">Change password</button>
+        <button mat-menu-item (click)="navigateToCompaniesList()">Account info</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>
+

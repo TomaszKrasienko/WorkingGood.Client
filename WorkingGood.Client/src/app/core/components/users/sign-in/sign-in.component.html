@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="text-center" style="background-color: dodgerblue">
+    <h1 style="margin: 20px; color: white">Sign In</h1>
+  </div>
+  <form (submit)="submit()" #signInForm="ngForm" style="margin-top: 20px">
+    <div class="row">
+      <div class="col-md-4 offset-4">
+        <mat-form-field class="form-filed width-100" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Email"
+            name="signInEmail"
+            [(ngModel)]="signInModel.email"
+            required
+            #signInEmail="ngModel">
+          <mat-error *ngIf="signInEmail.invalid && (signInEmail.touched || signInEmail.dirty)">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4 offset-4">
+        <mat-form-field class="form-field width-100" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            placeholder="Password"
+            name="signInPassword"
+            type="password"
+            [(ngModel)]="signInModel.password"
+            required
+            #signInPassword="ngModel">
+          <mat-error *ngIf="signInPassword.invalid && (signInPassword.touched || signInPassword.dirty)">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+        <div class="row">
+          <div class="col-md-6">
+            <a routerLink="/users/remind-password" mat-button>Forgot password?</a>
+          </div>
+          <div class="col-md-6">
+            <app-confirm-button [isValid]="(!signInEmail.invalid && !signInPassword.invalid)"></app-confirm-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,6 +1,9 @@
 <div class="col-md-12 section" style="padding: 10px">
-  <h2>
-    <i class="bi bi-coin"></i> Salary range: {{offer?.salaryRangeMin}} - {{offer?.salaryRangeMax}} $
+  <h2 *ngIf="offer.ContractSalaryRangeMin !== undefined && offer.ContractSalaryRangeMax !== undefined">
+    <i class="bi bi-coin"></i> Contract salary range: {{offer?.ContractSalaryRangeMin}} - {{offer?.ContractSalaryRangeMax}} $
+  </h2>
+  <h2 *ngIf="offer.B2BSalaryRangeMin !== undefined && offer.B2BSalaryRangeMax !== undefined">
+    <i class="bi bi-coin"></i> B2B salary range: {{offer?.B2BSalaryRangeMin}} - {{offer?.B2BSalaryRangeMax}} $
   </h2>
   <h2>
     <i class="bi bi-person"></i> {{offer?.position?.name}}
@@ -12,7 +15,7 @@
     <i class="bi bi-house"></i> {{offer?.type}}
   </h2>
   <h2 *ngIf="offer.localization">
-    <i class="bi bi-pin-map-fill"></i> {{offer?.localization}}
+    <app-maps-button [address]="offer?.localization"></app-maps-button>
   </h2>
   <button class="btn btn-outline-dark" style="width: 100%">
     APPLY

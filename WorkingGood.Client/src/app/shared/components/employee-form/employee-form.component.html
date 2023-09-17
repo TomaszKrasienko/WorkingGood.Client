@@ -1,0 +1,61 @@
+<form [formGroup]="employeeForm" (submit)="submit()">
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field class="form-field width-100" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+            placeholder="Email"
+            name="employeeEmail"
+            formControlName="email">
+        <mat-error *ngIf="employeeForm.get('email')?.hasError('required') && (employeeForm.get('email')?.dirty || employeeForm.get('email')?.touched)">
+          <div>Email is required</div>
+        </mat-error>
+        <mat-error *ngIf="employeeForm.get('email')?.hasError('email') && (employeeForm.get('email')?.dirty || employeeForm.get('email')?.touched)">
+          <div>Email is invalid</div>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="form-field width-100" appearance="outline">
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role" [disabled]="isFirstUser">
+          <mat-option *ngFor="let role of employeesRoles" [value]="role.id">
+            {{role.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field class="form-field width-100" appearance="outline">
+        <mat-label>First name</mat-label>
+        <input
+          matInput
+          placeholder="First name"
+          name="employeeFirstName"
+          formControlName="firstName">
+        <mat-error *ngIf="employeeForm.get('firstName')?.hasError('required') && (employeeForm.get('firstName')?.dirty || employeeForm.get('firstName')?.touched)">
+          <div>First name is required</div>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field class="form-field width-100" appearance="outline">
+        <mat-label>First name</mat-label>
+        <input
+          matInput
+          placeholder="Last name"
+          name="employeeLastName"
+          formControlName="lastName">
+        <mat-error *ngIf="employeeForm.get('lastName')?.hasError('required') && (employeeForm.get('lastName')?.dirty || employeeForm.get('lastName')?.touched)">
+          <div>Last name is required</div>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div *ngIf="!hideSubmitButton">
+    <app-confirm-button [isValid]="!employeeForm.invalid"></app-confirm-button>
+  </div>
+</form>

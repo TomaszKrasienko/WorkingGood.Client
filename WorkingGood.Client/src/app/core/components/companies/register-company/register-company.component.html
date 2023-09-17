@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="text-center" style="background-color: dodgerblue">
+    <h1 style="margin: 20px; color: white">Register company</h1>
+  </div>
+  <div class="col-md-8 offset-2">
+    <app-company-form
+      [pageTitle]="'Register company'"
+      (companyEventEmitter)="getCompany($event)"
+      [hideSubmitButton]="icCompanyFilled">
+    </app-company-form>
+    <app-employee-form
+      [isFirstUser]="true"
+      (employeeEventEmitter)="getEmployee($event)"
+      *ngIf="icCompanyFilled"
+      [hideSubmitButton]="isEmployeeFilled">
+    </app-employee-form>
+    <app-password-form
+      (passwordEventEmitter)="register($event)">
+      *ngIf="isEmployeeFilled">
+    </app-password-form>
+  </div>
+</div>

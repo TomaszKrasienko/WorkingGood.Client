@@ -2,8 +2,10 @@ import {SkillModel} from "../skills/skill.model";
 
 export interface OfferModel {
   title: string;
-  salaryRangeMin: number;
-  salaryRangeMax: number;
+  ContractSalaryRangeMin: number;
+  ContractSalaryRangeMax: number;
+  B2BSalaryRangeMin: number;
+  B2BSalaryRangeMax: number;
   description: string;
   positionName: string;
   positionLevel: string;

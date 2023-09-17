@@ -10,21 +10,26 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-10 text-center">
+    <div class="col-md-10">
       <div class="row">
         <div class="col-md-2">
           <i class="bi bi-building"></i> {{offer?.companyName}}
         </div>
-        <div class="col-md-2">
-          <i class="bi bi-coin"></i> {{offer?.salaryRangeMin}} - {{offer?.salaryRangeMax}} PLN
+        <div class="col-md-3">
+          <div *ngIf="offer.ContractSalaryRangeMin !== undefined && offer.ContractSalaryRangeMax !== undefined">
+            <i class="bi bi-coin"></i> Contract: {{offer?.ContractSalaryRangeMin}} - {{offer?.ContractSalaryRangeMax}} PLN
+          </div>
+          <div *ngIf="offer.B2BSalaryRangeMin !== undefined && offer.B2BSalaryRangeMax !== undefined" >
+            <i class="bi bi-coin"></i> B2B: {{offer?.B2BSalaryRangeMin}} - {{offer?.B2BSalaryRangeMax}} PLN
+          </div>
         </div>
         <div class="col-md-2">
           <i class="bi bi-person"></i> {{offer?.position?.name}}
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
           <i class="bi bi-graph-up"></i> {{offer?.position?.level}}
         </div>
-        <div class="col-md-2">
+        <div class="col-md-1">
           <i class="bi bi-graph-up"></i> {{offer?.type}}
         </div>
       </div>

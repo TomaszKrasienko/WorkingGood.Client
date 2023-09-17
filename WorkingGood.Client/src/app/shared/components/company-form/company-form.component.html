@@ -1,0 +1,50 @@
+<form #companyForm="ngForm" (submit)="submit()">
+  <div class="row text-center" style="margin-top: 50px">
+    <div class="col-md-6" style="margin-top: 25px">
+      <mat-form-field class="form-field width-100" appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput
+               placeholder="Name"
+               name="companyName"
+               [(ngModel)]="companyModel.name"
+               required
+               #companyName="ngModel"/>
+        <mat-error *ngIf="companyName.invalid && (companyName.touched || companyName.dirty)">
+          <div>Company name is required</div>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <button #file mat-flat-button style="background-color: transparent">
+        <ng-container *ngIf="companyModel?.logo">
+          <img class="company-logo-image" [src]="companyModel?.logo" *ngIf="companyModel?.logo">
+        </ng-container>
+        <ng-container *ngIf="!companyModel?.logo">
+          <div class="company-logo-image">
+            <mat-icon>add_photo_alternate</mat-icon>Company logo
+          </div>
+        </ng-container>
+        <input multiple class="company-image-input" (change)="selectFile($event)" type="file"/>
+      </button>
+      <p *ngIf="msg" style="color: red;">You can upload only image</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field class="form-field width-100" appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput
+                  rows="5"
+                  placeholder="Description"
+                  name="companyDescription"
+                  [(ngModel)]="companyModel.description"
+                  required
+                  #companyDescription="ngModel">
+        </textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div *ngIf="!hideSubmitButton">
+    <app-confirm-button [isValid]="!companyForm.invalid"></app-confirm-button>
+  </div>
+</form>

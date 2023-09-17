@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { OfferModel } from '../../../core/models/offers/offer.model';
 import {OffersService} from "../../../core/services/offfers/offers.service";
-import {FormControl, Validators} from "@angular/forms";
+import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {map, Observable, of, startWith} from "rxjs";
 import {PositionIdentity} from "../../../core/models/positions/position.identity";
 @Component({
@@ -48,6 +48,19 @@ export class OfferFormComponent implements OnInit {
   private _filter(value: string): PositionIdentity[] {
     const filterValue = value.toLowerCase();
     return this.positionsList.filter(option => option.name.toLowerCase().includes(filterValue));
+  }
+
+  isOfferValid(): boolean{
+    if(this.offerModel.ContractSalaryRangeMin === undefined || this.offerModel.ContractSalaryRangeMin < 500)
+      return false;
+    if(this.offerModel.ContractSalaryRangeMax === undefined || this.offerModel.ContractSalaryRangeMax < 500)
+      return false;
+    if(this.offerModel.B2BSalaryRangeMin === undefined || this.offerModel.B2BSalaryRangeMin < 500)
+      return false;
+    if(this.offerModel.B2BSalaryRangeMax === undefined || this.offerModel.B2BSalaryRangeMax < 500)
+      return false;
+    return true;
+
   }
 
   submit(): void{

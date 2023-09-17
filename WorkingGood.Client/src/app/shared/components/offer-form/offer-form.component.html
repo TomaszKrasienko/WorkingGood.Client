@@ -2,159 +2,227 @@
   <div class="text-center" style="background-color: dodgerblue">
     <h1 style="margin: 20px; color: white">{{pageTitle}}</h1>
   </div>
-  <div class="col-md-10 offset-1 text-center">
+  <div class="col-md-10 offset-1">
     <form  (submit)="submit()" #offerForm="ngForm">
       <div class="row">
         <div class="col-md-8 offset-2">
-          <div class="row">
-            <mat-form-field class="form-field width-100" appearance="outline" style="width: 100%; margin-top: 20px">
-              <mat-label>Title</mat-label>
-              <input
-                matInput
-                placeholder="Title"
-                name="offerName"
-                [(ngModel)]="offerModel.title"
-                [disabled]="isReadonly"
-                required
-                minlength="5"
-                #offerName="ngModel"/>
-                <mat-error *ngIf="offerName.invalid && (offerName.touched || offerName.dirty)">
-                  <div *ngIf="offerName.errors?.required">Offer name is required</div>
-                  <div *ngIf="offerName.errors?.minlength">Offer name has to contains at least 5 characters</div>
-                </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <mat-form-field class="form-field width-100" appearance="outline">
-                <mat-label>Position name</mat-label>
-                <input
-                  matInput
-                  placeholder="Position name"
-                  name="offerPositionName"
-                  [(ngModel)]="offerModel.positionName"
-                  [matAutocomplete]="autoPositions"
-                  (ngModelChange)="filterPositions()"
-                  [disabled]="isReadonly"
-                  required
-                  #offerPositionType="ngModel"/>
-                  <mat-autocomplete autoActiveFirstOption #autoPositions>
-                    <mat-option *ngFor="let position of filteredPositionList | async" [value]="position.name">
-                      {{position.name}}
-                    </mat-option>
-                  </mat-autocomplete>
-                <mat-error *ngIf="offerPositionType.invalid && (offerPositionType.touched || offerPositionType.dirty)">
-                  Position type is required
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="col-md-4">
-              <mat-form-field class="form-field width-100" appearance="outline">
-                <mat-label>Position name</mat-label>
-                <mat-select [(ngModel)]="offerModel.positionLevel" name="offerPositionLevel">
-                  <mat-option *ngFor="let option of positionsLevelList" [value]="option">
-                    {{option}}
-                  </mat-option>
-                  <mat-error *ngIf="offerPositionType.invalid && (offerPositionType.touched || offerPositionType.dirty)">
-                    Position type is required
-                  </mat-error>
-                </mat-select>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <mat-form-field class="form-field width-100" appearance="outline">
-                <mat-label>Salary range min</mat-label>
-                <input
-                  matInput
-                  type="number"
-                  placeholder="Salary range min"
-                  name="offerSalaryRangeMin"
-                  [(ngModel)]="offerModel.salaryRangeMin"
-                  [disabled]="isReadonly"
-                  required
-                  min="500"
-                  #offerSalaryRangeMin="ngModel"/>
-                <mat-error *ngIf="offerSalaryRangeMin.invalid && (offerSalaryRangeMin.touched || offerSalaryRangeMin.dirty)">
-                  <div *ngIf="offerSalaryRangeMin.errors?.required">Salary range min is required</div>
-                  <div *ngIf="offerSalaryRangeMin.errors?.min">Value must be above 500</div>
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="col-md-4">
-              <mat-form-field class="form-field width-100" appearance="outline">
-                <mat-label>Salary max</mat-label>
-                <input
-                  matInput
-                  type="number"
-                  placeholder="Salary range max"
-                  name="offerSalaryRangeMax"
-                  [(ngModel)]="offerModel.salaryRangeMax"
-                  [disabled]="isReadonly"
-                  required
-                  min="500"
-                  #offerSalaryRangeMax="ngModel"/>
-                <mat-error *ngIf="offerSalaryRangeMax.invalid && (offerSalaryRangeMax.touched || offerSalaryRangeMax.dirty)">
-                  <div *ngIf="offerSalaryRangeMax.errors?.required">Salary range min is required</div>
-                  <div *ngIf="offerSalaryRangeMax.errors?.min">Value must be above 500</div>
-                </mat-error>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <mat-form-field class="form-field width-100" appearance="outline">
-                <mat-label>Offer type</mat-label>
-                <mat-select [(ngModel)]="offerModel.type" name="offerType">
-                  <mat-option *ngFor="let option of workTypes" [value]="option">
-                    {{option}}
-                  </mat-option>
-                  <mat-error *ngIf="offerPositionType.invalid && (offerPositionType.touched || offerPositionType.dirty)">
-                    Position type is required
-                  </mat-error>
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="col-md-4">
-              <mat-form-field class="form-field width-100" appearance="outline">
-                <mat-label>Localization</mat-label>
-                <input
-                  matInput
-                  placeholder="Localization"
-                  name="offerLocalization"
-                  [(ngModel)]="offerModel.localization"
-                  #offerName="ngModel"/>
-                <mat-error *ngIf="offerPositionType.invalid && (offerPositionType.touched || offerPositionType.dirty)">
-                  Position type is required
-                </mat-error>
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <mat-form-field class="form-field" appearance="outline" style="width: 100%">
-              <mat-label>Description</mat-label>
-              <textarea
-                matInput
-                rows="5"
-                placeholder="Description"
-                name="offerDescription"
-                [(ngModel)]="offerModel.description"
-                [disabled]="isReadonly"
-                required
-                minlength="30"
-                #offerDescription="ngModel">
+          <mat-stepper #offerSteppe>
+            <mat-step>
+              <ng-template matStepLabel>Basic infos</ng-template>
+                <div class="row">
+                  <mat-form-field class="form-field width-100" appearance="outline" style="width: 100%; margin-top: 20px">
+                    <mat-label>Title</mat-label>
+                    <input
+                      matInput
+                      placeholder="Title"
+                      name="offerName"
+                      [(ngModel)]="offerModel.title"
+                      [disabled]="isReadonly"
+                      required
+                      minlength="5"
+                      #offerName="ngModel"/>
+                    <mat-error *ngIf="offerName.invalid && (offerName.touched || offerName.dirty)">
+                      <div *ngIf="offerName.errors?.required">Offer name is required</div>
+                      <div *ngIf="offerName.errors?.minlength">Offer name has to contains at least 5 characters</div>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field class="form-field width-100" appearance="outline">
+                      <mat-label>Position name</mat-label>
+                      <input
+                        matInput
+                        placeholder="Position name"
+                        name="offerPositionName"
+                        [(ngModel)]="offerModel.positionName"
+                        [matAutocomplete]="autoPositions"
+                        (ngModelChange)="filterPositions()"
+                        [disabled]="isReadonly"
+                        required
+                        #offerPositionType="ngModel"/>
+                      <mat-autocomplete autoActiveFirstOption #autoPositions>
+                        <mat-option *ngFor="let position of filteredPositionList | async" [value]="position.name">
+                          {{position.name}}
+                        </mat-option>
+                      </mat-autocomplete>
+                      <mat-error *ngIf="offerPositionType.invalid && (offerPositionType.touched || offerPositionType.dirty)">
+                        Position type is required
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field class="form-field width-100" appearance="outline">
+                      <mat-label>Position name</mat-label>
+                      <mat-select [(ngModel)]="offerModel.positionLevel" name="offerPositionLevel" required>
+                        <mat-option *ngFor="let option of positionsLevelList" [value]="option">
+                          {{option}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+              <div>
+                <button type="button" mat-button matStepperNext>Next</button>
+              </div>
+            </mat-step>
+
+            <mat-step>
+              <ng-template matStepLabel>Contract terms</ng-template>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="form-field width-100" appearance="outline">
+                    <mat-label>Offer type</mat-label>
+                    <mat-select [(ngModel)]="offerModel.type" name="offerType">
+                      <mat-option *ngFor="let option of workTypes" [value]="option">
+                        {{option}}
+                      </mat-option>
+                      <mat-error *ngIf="offerPositionType.invalid && (offerPositionType.touched || offerPositionType.dirty)">
+                        Position type is required
+                      </mat-error>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="form-field width-100" appearance="outline">
+                    <mat-label>Localization</mat-label>
+                    <input
+                      matInput
+                      placeholder="Localization"
+                      name="offerLocalization"
+                      [(ngModel)]="offerModel.localization"
+                      #offerName="ngModel"/>
+                    <mat-error *ngIf="offerPositionType.invalid && (offerPositionType.touched || offerPositionType.dirty)">
+                      Position type is required
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-2">
+                  <mat-checkbox #contractCheckBox>Contract</mat-checkbox>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="form-field width-100" appearance="outline">
+                    <mat-label>Contract salary range min</mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      placeholder="Contract salary range min"
+                      name="offerContractSalaryRangeMin"
+                      [(ngModel)]="offerModel.ContractSalaryRangeMax"
+                      [disabled]="!contractCheckBox.checked"
+                      required
+                      min="500"
+                      #offerContractSalaryRangeMin="ngModel"/>
+                    <mat-error *ngIf="contractCheckBox.checked && offerContractSalaryRangeMin.invalid && (offerContractSalaryRangeMin.touched || offerContractSalaryRangeMin.dirty)">
+                      <div *ngIf="offerContractSalaryRangeMin.errors?.required">Salary range min is required</div>
+                      <div *ngIf="offerContractSalaryRangeMin.errors?.min">Value must be above 500</div>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="form-field width-100" appearance="outline">
+                    <mat-label>Contract salary range max</mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      placeholder="Contract salary range max"
+                      name="offerContractSalaryRangeMax"
+                      [(ngModel)]="offerModel.ContractSalaryRangeMax"
+                      [disabled]="!contractCheckBox.checked"
+                      required
+                      min="500"
+                      #offerContractSalaryRangeMax="ngModel"/>
+                    <mat-error *ngIf="contractCheckBox.checked && offerContractSalaryRangeMax.invalid && (offerContractSalaryRangeMax.touched || offerContractSalaryRangeMax.dirty)">
+                      <div *ngIf="offerContractSalaryRangeMax.errors?.required">Salary range min is required</div>
+                      <div *ngIf="offerContractSalaryRangeMax.errors?.min">Value must be above 500</div>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-2">
+                  <mat-checkbox #B2BCheckBox>B2B</mat-checkbox>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="form-field width-100" appearance="outline">
+                    <mat-label>B2B salary range min</mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      placeholder="B2B salary range min"
+                      name="offerB2BSalaryRangeMin"
+                      [(ngModel)]="offerModel.B2BSalaryRangeMin"
+                      [disabled]="!B2BCheckBox.checked"
+                      required
+                      min="500"
+                      #offerB2BSalaryRangeMin="ngModel"/>
+                    <mat-error *ngIf="B2BCheckBox.checked && offerB2BSalaryRangeMin.invalid && (offerB2BSalaryRangeMin.touched || offerB2BSalaryRangeMin.dirty)">
+                      <div *ngIf="offerB2BSalaryRangeMin.errors?.required">Salary range min is required</div>
+                      <div *ngIf="offerB2BSalaryRangeMin.errors?.min">Value must be above 500</div>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="form-field width-100" appearance="outline">
+                    <mat-label>B2B salary range max</mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      placeholder="B2B salary range max"
+                      name="offerB2BSalaryRangeMax"
+                      [(ngModel)]="offerModel.B2BSalaryRangeMax"
+                      [disabled]="!B2BCheckBox.checked"
+                      required
+                      min="500"
+                      #offerB2BSalaryRangeMax="ngModel"/>
+                    <mat-error *ngIf="B2BCheckBox.checked && offerB2BSalaryRangeMax.invalid && (offerB2BSalaryRangeMax.touched || offerB2BSalaryRangeMax.dirty)">
+                      <div *ngIf="offerB2BSalaryRangeMax.errors?.required">Salary range min is required</div>
+                      <div *ngIf="offerB2BSalaryRangeMax.errors?.min">Value must be above 500</div>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div>
+                <button type="button" mat-button matStepperPrevious>Previous</button>
+                <button type="button" mat-button matStepperNext>Next</button>
+              </div>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Description</ng-template>
+              <div class="row">
+                <mat-form-field class="form-field" appearance="outline" style="width: 100%">
+                  <mat-label>Description</mat-label>
+                  <textarea
+                    matInput
+                    rows="5"
+                    placeholder="Description"
+                    name="offerDescription"
+                    [(ngModel)]="offerModel.description"
+                    [disabled]="isReadonly"
+                    required
+                    minlength="30"
+                    #offerDescription="ngModel">
               </textarea>
-              <mat-error *ngIf="offerDescription.invalid && (offerDescription.touched || offerDescription.dirty)">
-                <div *ngIf="offerDescription.errors?.required">Salary range min is required</div>
-                <div *ngIf="offerDescription.errors?.minlength">Offer name has to contains at least 30 characters</div>
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <app-confirm-button [isValid]="!offerForm.valid"></app-confirm-button>
+                  <mat-error *ngIf="offerDescription.invalid && (offerDescription.touched || offerDescription.dirty)">
+                    <div *ngIf="offerDescription.errors?.required">Salary range min is required</div>
+                    <div *ngIf="offerDescription.errors?.minlength">Offer name has to contains at least 30 characters</div>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <app-confirm-button [isValid]="isOfferValid()"></app-confirm-button>
+                <button type="button" mat-button matStepperPrevious>Previous</button>
+              </div>
+            </mat-step>
+          </mat-stepper>
         </div>
       </div>
     </form>
   </div>
 </div>
-<
+

@@ -11,6 +11,7 @@ export class DetailsOfOfferSummaryComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.offer?.B2BSalaryRangeMax);
   }
 
 }

@@ -13,8 +13,8 @@ export class OffersService {
     {
       id: '74d42112-fa74-4dc1-94bf-0562a398760d',
       title: 'Java developer do projektu dla firmy z elektrowniami wiatrowymi ',
-      salaryRangeMin: 10_000,
-      salaryRangeMax: 15_000,
+      ContractSalaryRangeMin: 10_000,
+      ContractSalaryRangeMax: 15_000,
       description: 'Jakieś tam wymagania, które na pewno nikt nie spełni. Ta ta t at a ta Proba edycji przez menadżera 123 1. asdnsajdnsjansdjnasjdnaksnd kasndkasndkj ansdkansjkdna skdnaksjdnajk sndjkasndkajs ndkasndkan jsdkansdjans jkdanskdn askjdnask jdnakjsndkasda knskdanskd',
       companyId: '1d096721-ed8c-4534-886d-1c7ab9ce0ce1',
       skillsList: [
@@ -62,8 +62,10 @@ export class OffersService {
     {
       id: '74d42177-fa74-4dc1-94bf-0562a398760d',
       title: 'Java developer do projektu dla firmy z elektrowniami wiatrowymi ',
-      salaryRangeMin: 10_000,
-      salaryRangeMax: 15_000,
+      ContractSalaryRangeMin: 9_000,
+      ContractSalaryRangeMax: 13_000,
+      B2BSalaryRangeMin: 10_000,
+      B2BSalaryRangeMax: 15_000,
       description: 'Jakieś tam wymagania, które na pewno nikt nie spełni. Ta ta t at a ta Proba edycji przez menadżera 123 1. asdnsajdnsjansdjnasjdnaksnd kasndkasndkj ansdkansjkdna skdnaksjdnajk sndjkasndkajs ndkasndkan jsdkansdjans jkdanskdn askjdnask jdnakjsndkasda knskdanskd',
       companyId: '1d096721-ed8c-4534-886d-1c7ab9ce0ce1',
       skillsList: [

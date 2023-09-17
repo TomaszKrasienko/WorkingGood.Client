@@ -4,8 +4,10 @@ import {PositionIdentity} from "../positions/position.identity";
 export interface OfferIdentity{
   id: string;
   title: string;
-  salaryRangeMin: number;
-  salaryRangeMax: number;
+  ContractSalaryRangeMin?: number;
+  ContractSalaryRangeMax?: number;
+  B2BSalaryRangeMin?: number;
+  B2BSalaryRangeMax?: number;
   description: string;
   offerStatus: string;
   position: PositionIdentity;

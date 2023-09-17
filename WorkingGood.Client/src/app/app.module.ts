@@ -26,8 +26,28 @@ import { DetailsOfOfferSummaryComponent } from './core/components/offers/details
 import { SkillViewComponent } from './shared/components/skill-view/skill-view.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatSelectModule} from "@angular/material/select";
-import {NgxEditorModule} from "ngx-editor";
-
+import {HttpClientModule} from "@angular/common/http";
+import {MatStepperModule} from "@angular/material/stepper";
+import { MapsButtonComponent } from './shared/components/maps-button/maps-button.component';
+import { CompanyFormComponent } from './shared/components/company-form/company-form.component';
+import { RegisterCompanyComponent } from './core/components/companies/register-company/register-company.component';
+import { EditCompanyComponent } from './core/components/companies/edit-company/edit-company.component';
+import {MatMenuModule} from "@angular/material/menu";
+import { RegisterEmployeeComponent } from './core/components/employees/register-employee/register-employee.component';
+import { EmployeeFormComponent } from './shared/components/employee-form/employee-form.component';
+import {MatFormField} from "@angular/material/form-field";
+import { PasswordFormComponent } from './shared/components/password-form/password-form.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dialog";
+import {MatListModule} from "@angular/material/list";
+import {MatRadioModule} from "@angular/material/radio";
+import { SignUpComponent } from './core/components/users/sign-up/sign-up.component';
+import { SignInComponent } from './core/components/users/sign-in/sign-in.component';
+import { ChangePasswordComponent } from './core/components/users/change-password/change-password.component';
+import { RemindPasswordComponent } from './core/components/users/remind-password/remind-password.component';
+import { ResetPasswordComponent } from './core/components/users/reset-password/reset-password.component';
+import { CompanyOffersListComponent } from './core/components/offers/company-offers-list/company-offers-list.component';
+import {MatChipsModule} from "@angular/material/chips";
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +61,20 @@ import {NgxEditorModule} from "ngx-editor";
     EditOfferComponent,
     DetailsOfOfferComponent,
     DetailsOfOfferSummaryComponent,
-    SkillViewComponent
+    SkillViewComponent,
+    MapsButtonComponent,
+    CompanyFormComponent,
+    RegisterCompanyComponent,
+    EditCompanyComponent,
+    RegisterEmployeeComponent,
+    EmployeeFormComponent,
+    PasswordFormComponent,
+    SignUpComponent,
+    SignInComponent,
+    ChangePasswordComponent,
+    RemindPasswordComponent,
+    ResetPasswordComponent,
+    CompanyOffersListComponent
   ],
   imports: [
     BrowserModule,
@@ -58,9 +91,18 @@ import {NgxEditorModule} from "ngx-editor";
     MatIconModule,
     MatAutocompleteModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule,
+    MatStepperModule,
+    MatMenuModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    MatListModule,
+    MatRadioModule,
+    MatChipsModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

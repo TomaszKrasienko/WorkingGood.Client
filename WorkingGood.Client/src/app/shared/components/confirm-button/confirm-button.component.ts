@@ -7,7 +7,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class ConfirmButtonComponent implements OnInit {
   @Output() confirmEmitter = new EventEmitter<void>();
-  @Input() isValid = true;
+  @Input() isValid:boolean | null = true;
   constructor() { }
 
   ngOnInit(): void {

@@ -2,7 +2,7 @@
   <div class="text-center" style="background-color: dodgerblue">
     <h1 style="margin: 20px; color: white">Works offers</h1>
   </div>
-  <mat-sidenav-container class="example-container" >
+  <mat-sidenav-container>
     <mat-sidenav #sidenav mode="side" [(opened)]="sideNavOpened" style="width: 500px;">
       <div class="col-md-10 offset-1">
         <app-offers-filters (filterEventEmitter)="filterOffers($event)"></app-offers-filters>
