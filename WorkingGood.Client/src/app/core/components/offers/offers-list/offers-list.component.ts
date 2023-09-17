@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {OffersService} from "../../../services/offfers/offers.service";
-import {PageEvent} from "@angular/material/paginator";
+import {LegacyPageEvent as PageEvent} from "@angular/material/legacy-paginator";
 import {OfferIdentity} from "../../../models/offers/offer.Identity";
 import {OffersListFilterModel} from "../../../../shared/models/offersListFilter.Model";
 import {of} from "rxjs";

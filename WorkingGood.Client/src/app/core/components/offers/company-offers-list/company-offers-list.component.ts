@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PageEvent} from "@angular/material/paginator";
+import {LegacyPageEvent as PageEvent} from "@angular/material/legacy-paginator";
 import {OffersListFilterModel} from "../../../../shared/models/offersListFilter.Model";
 import {OfferIdentity} from "../../../models/offers/offer.Identity";
 import {OffersService} from "../../../services/offfers/offers.service";
