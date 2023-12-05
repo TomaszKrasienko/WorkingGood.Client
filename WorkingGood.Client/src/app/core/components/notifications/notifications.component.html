@@ -1,0 +1,10 @@
+<div
+  class="alert alert-info alert-dismissible fade show"
+  role="alert"
+  *ngIf="isVisible"
+  style="position: fixed; top: 75px;
+  right: 50px">
+  {{notification.content}}
+  <button type="button" (click)="clearNotification()" class="btn-close"
+          data-bs-dismiss="alert" aria-label="Close"></button>
+</div>

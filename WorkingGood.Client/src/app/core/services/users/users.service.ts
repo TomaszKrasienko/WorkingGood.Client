@@ -3,17 +3,21 @@ import {SignInModel} from "../../models/users/signIn.model";
 import {Observable, of} from "rxjs";
 import {PasswordModel} from "../../../shared/models/password.Model";
 import {RemindPasswordModel} from "../../models/users/remindPassword.Model";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-
-  constructor() { }
+  url: string = 'http://localhost:50001'
+  constructor(private httpClient: HttpClient) { }
 
   signIn(signInModel: SignInModel): Observable<any>{
-    console.log(signInModel);
-    return of();
+    return this.httpClient.post(`${this.url}/sign-in`, signInModel);
+  }
+
+  getMe(): Observable<any> {
+    return this.httpClient.get(`${this.url}/me`);
   }
 
   changePassword(passwordModel: PasswordModel): Observable<any>{

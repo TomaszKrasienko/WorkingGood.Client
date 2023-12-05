@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {TokenService} from "../../services/token/token.service";
+import {UsersService} from "../../services/users/users.service";
+import {UserInfosIdentity} from "../../models/users/userInfos.Identity";
 
 @Component({
   selector: 'app-header',
@@ -7,11 +10,19 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  userFullName?: string;
+  constructor(private router: Router,
+              private tokenService: TokenService,
+              private usersService: UsersService) { }
 
 
   ngOnInit(): void {
+    if (this.userFullName === null){
+      this.usersService.getMe()
+        .subscribe((result: UserInfosIdentity) =>{
+
+        })
+    }
   }
 
   navigateToAllOffers(): void{
@@ -31,7 +42,7 @@ export class HeaderComponent implements OnInit {
   }
 
   navigateToCompaniesList(): void {
-    this.router.navigate(['offers/add']);
+    this.router.navigate(['companies/companiesList']);
   }
 
   navigateToCompanyEdit(): void {
@@ -48,5 +59,9 @@ export class HeaderComponent implements OnInit {
 
   navigateToChangePassword(): void {
     this.router.navigate(['/users/change-password'])
+  }
+
+  navigateToSavedOffers(): void {
+    this.router.navigate(['users/saved-offers'])
   }
 }

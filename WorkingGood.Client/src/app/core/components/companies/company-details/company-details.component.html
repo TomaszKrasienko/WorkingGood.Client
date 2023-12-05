@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="text-center" style="background-color: dodgerblue">
+    <h1 style="margin: 20px; color: white">{{company?.name}}</h1>
+  </div>
+  <div class="row" style="margin-top: 50px;">
+    <div class="row">
+      <div class="col-md-8 offset-2">
+        <app-company-section [company]="company"></app-company-section>
+      </div>
+    </div>
+    <div class="row" style="margin-top: 15px">
+      <div class="text-center">
+        <button
+          mat-raised-button
+          class="offers-expandable-btn"
+          (click)="changeOffersVisibility()">
+          <i class="bi bi-chevron-double-down" *ngIf="!isOffersVisible"></i>
+          <i class="bi bi-chevron-double-up" *ngIf="isOffersVisible"></i>
+          Offers
+        </button>
+      </div>
+    </div>
+    <div
+      class="row"
+      style="margin-top: 30px"
+      *ngIf="isOffersVisible">
+      <div class="col-md-10 offset-1">
+        <app-offers-list
+          [offersListFilters]="offersListFilters">
+        </app-offers-list>
+      </div>
+    </div>
+  </div>
+</div>
+
+

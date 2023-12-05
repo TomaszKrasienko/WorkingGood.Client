@@ -7,6 +7,8 @@ import {Observable, of} from "rxjs";
 export class DictionariesService {
   offersStatuses: string[] = ['Accepted', 'Rejected'];
   experienceLevels: string[] = ['Intern', 'Junior', 'Mid', 'Senior', 'Architect']
+  mainTechnologies: string[] = ['Angular', '.Net', 'Java', 'Python']
+
   constructor() { }
 
   getOffersStatuses(): Observable<any>{
@@ -15,5 +17,9 @@ export class DictionariesService {
 
   getExperienceLevels(): Observable<any>{
     return of(this.experienceLevels);
+  }
+
+  getTechnologies(): Observable<any>{
+    return of(this.mainTechnologies);
   }
 }

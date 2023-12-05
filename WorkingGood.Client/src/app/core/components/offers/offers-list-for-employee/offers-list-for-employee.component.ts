@@ -5,11 +5,11 @@ import {OfferIdentity} from "../../../models/offers/offer.Identity";
 import {OffersService} from "../../../services/offfers/offers.service";
 
 @Component({
-  selector: 'app-company-offers-list',
-  templateUrl: './company-offers-list.component.html',
-  styleUrls: ['./company-offers-list.component.css']
+  selector: 'app-offers-list-for-employee-for-client',
+  templateUrl: './offers-list-for-employee.component.html',
+  styleUrls: ['./offers-list-for-employee.component.css']
 })
-export class CompanyOffersListComponent implements OnInit {
+export class OffersListForEmployeeComponent implements OnInit {
   sideNavOpened: boolean = false;
   paginationLength: number = 100;
   paginationPageSize: number = 15;
@@ -30,7 +30,6 @@ export class CompanyOffersListComponent implements OnInit {
 
   filterOffers(offersListFilter: OffersListFilterModel): void{
     console.log(offersListFilter);
-    this.sideNavOpened = !this.sideNavOpened;
   }
 
   private _setOffersList(): void{
@@ -39,5 +38,9 @@ export class CompanyOffersListComponent implements OnInit {
       .subscribe((result: OfferIdentity[]) => {
         this.activeOffersList = result;
       });
+  }
+
+  confirmFilters(): void{
+    this.sideNavOpened = !this.sideNavOpened;
   }
 }

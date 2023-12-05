@@ -1,0 +1,50 @@
+<form [formGroup]="userForm">
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <mat-form-field class="form-field width-100" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="Email"
+          name="userEmail"
+          formControlName="email">
+        <mat-error *ngIf="userForm.get('email')?.hasError('required') && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">
+          <div>Email is required</div>
+        </mat-error>
+        <mat-error *ngIf="userForm.get('email')?.hasError('email') && (userForm.get('email')?.dirty || userForm.get('email')?.touched)">
+          <div>Email is invalid</div>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <mat-form-field class="form-field width-100" appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input
+          matInput
+          placeholder="First Name"
+          name="userFirstName"
+          formControlName="firstName">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <mat-form-field class="form-field width-100" appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input
+          matInput
+          placeholder="Last Name"
+          name="userLastName"
+          formControlName="lastName">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <app-password-form></app-password-form>
+    </div>
+  </div>
+  <app-confirm-button [isValid]="!userForm.invalid"></app-confirm-button>
+</form>

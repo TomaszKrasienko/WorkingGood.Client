@@ -15,7 +15,7 @@
       [hideSubmitButton]="isEmployeeFilled">
     </app-employee-form>
     <app-password-form
-      (passwordEventEmitter)="register($event)">
+      (passwordEventEmitter)="register($event)"
       *ngIf="isEmployeeFilled">
     </app-password-form>
   </div>

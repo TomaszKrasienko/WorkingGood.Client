@@ -1,0 +1,34 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [(opened)]="sideNavOpened" style="width: 500px;">
+    <div class="col-md-10 offset-1">
+      <app-offers-filters
+        (filterEventEmitter)="filterOffers($event)"
+        (confirmEventEmitter)="confirmFilters()"
+        [isCompanyMode]="isForEmployees"></app-offers-filters>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content style="background-color: white;">
+    <button
+      mat-mini-fab
+      style="background-color: dodgerblue; margin: 20px;"
+      (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div style="width: 99%;">
+      <ng-container *ngFor="let offer of offersList">
+        <app-row-card
+          [offer]="offer"
+          [isForEmployees]=isForEmployees
+          [offersListFilter]="offersListFilters"></app-row-card>
+      </ng-container>
+    </div>
+    <mat-paginator #paginator
+                   (page)="handlePageEvent($event)"
+                   [length]=paginationLength
+                   [pageSize]=paginationPageSize
+                   [pageSizeOptions]="[5, 10, 15, 20]"
+                   [pageIndex]="paginationPageIndex"
+                   aria-label="Select page">
+    </mat-paginator>
+  </mat-sidenav-content>
+</mat-sidenav-container>

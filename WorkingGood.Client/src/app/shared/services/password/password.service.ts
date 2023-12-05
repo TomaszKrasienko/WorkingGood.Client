@@ -9,27 +9,27 @@ export class PasswordService {
 
   passwordRequirements: PasswordRequirementModel[] = [
     {
-      name: 'Password must contains lower case characters',
+      name: 'Lower case characters',
       isValid: false,
       passwordRequirement: PasswordRequirements.lowerCase
     },
     {
-      name: 'Password must contains upper case characters',
+      name: 'Upper case characters',
       isValid: false,
       passwordRequirement: PasswordRequirements.upperCase
     },
     {
-      name: 'Password must have be at least 6 characters',
+      name: 'At least 6 characters',
       isValid: false,
       passwordRequirement: PasswordRequirements.length
     },
     {
-      name: 'Password must contains at least 1 number',
+      name: 'At least 1 number',
       isValid: false,
       passwordRequirement: PasswordRequirements.numbers
     },
     {
-      name: 'Password must contains at least 1 special character',
+      name: 'At least 1 special character',
       isValid: false,
       passwordRequirement: PasswordRequirements.specialCharacters
     }

@@ -1,0 +1,26 @@
+.company-logo-image {
+  width: 150px;
+  height: 130px;
+  border-radius: 50%;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.description-paragraph{
+  font-size: 18px;
+}
+
+.company-base-border{
+  border-width: 1px;
+  border-style: solid;
+  border-color: lightgray;
+}
+
+.tmp{
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 20px;
+}

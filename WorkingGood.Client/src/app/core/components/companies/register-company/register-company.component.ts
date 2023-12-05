@@ -17,8 +17,8 @@ import {Router} from "@angular/router";
 export class RegisterCompanyComponent implements OnInit {
   icCompanyFilled: boolean = false;
   isEmployeeFilled: boolean = false;
-  company: CompanyModel;
-  employee: EmployeeModel;
+  company?: CompanyModel;
+  employee?: EmployeeModel;
 
   constructor(private companiesService: CompaniesService, private dialog: Dialog, private router: Router) { }
 
@@ -40,13 +40,13 @@ export class RegisterCompanyComponent implements OnInit {
   register(password: PasswordModel): void{
     console.log('Register company working');
     let registerCompanyModel: RegisterCompanyModel = {
-      name: this.company?.name,
-      description: this.company?.description,
-      logo: this.company?.logo,
-      email: this.employee?.email,
-      firstName: this.employee?.firstName,
-      lastName: this.employee?.lastName,
-      role: this.employee?.role,
+      name: (this.company?.name as string),
+      description: (this.company?.description as string),
+      logo: (this.company?.logo as string),
+      email: (this.employee?.email as string),
+      firstName: (this.employee?.firstName as string),
+      lastName: (this.employee?.lastName as string),
+      role: (this.employee?.role as string),
       password: password?.password,
       passwordConfirmation: password?.passwordConfirmation
     }

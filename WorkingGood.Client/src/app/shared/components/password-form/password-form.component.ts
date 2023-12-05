@@ -14,6 +14,7 @@ import {PasswordRequirementModel} from "../../models/passwordRequirement.Model";
 })
 export class PasswordFormComponent implements OnInit {
   @Output() passwordEventEmitter = new EventEmitter<PasswordModel>();
+
   passwordRequirements: PasswordRequirementModel[] = [];
   passwordModel: Partial<PasswordModel> = {};
   passwordFormGroup = this.formBuilder.group({

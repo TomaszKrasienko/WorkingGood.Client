@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-3 company-base-border">
+    <div class="row" style="width: 100%">
+      <!--          <ng-container *ngIf="company?.logo">-->
+      <img class="company-logo-image" [src]="'https://pesi.pl/img/offers/projektowanie-logo-1.png'"/>
+      <!--          </ng-container>-->
+    </div>
+    <div class="row">
+      <p>
+        <i class="bi bi-pin-map"></i> {{company?.location}}
+      </p>
+      <p>
+        <i class="bi bi-chat-left-dots"></i> {{company?.contactEmail}}
+      </p>
+      <p>
+        <i class="bi bi-link"></i> {{company?.urlLink}}
+      </p>
+    </div>
+  </div>
+  <div class="col-md-8 company-base-border">
+    <div class="row">
+      <h2 class="text-center">{{company?.name}}</h2>
+    </div>
+    <div class="row">
+      <p class="text-center description-paragraph">{{company?.description}}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+<div>
+  <div class="row text-center">
+    <h2>Filters</h2>
+    <form (submit)="confirm()" #filtersForm="ngForm">
+      <div class="col-md-12">
+        <mat-form-field appearance="outline" style="width: 100%">
+          <mat-label>Search phrase</mat-label>
+          <input
+            matInput
+            placeholder="Search phrase"
+            name="filtersSearchPhrase"
+            id="filtersSearchPhrase"
+            [(ngModel)]="offersListFiltersModel.searchPhrase"
+            #searchPhrase="ngModel"
+            (focusout)="filter()">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Range from</mat-label>
+            <input
+              matInput
+              type="number"
+              placeholder="Range from"
+              name="filtersRangeFrom"
+              id="filtersRangeFrom"
+              [(ngModel)]="offersListFiltersModel.rangeFrom"
+              #rangeFrom="ngModel"
+              (focusout)="filter()">
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Range to</mat-label>
+            <input
+              matInput
+              type="number"
+              placeholder="Range to"
+              name="filtersRangeTo"
+              id="filtersRangeTo"
+              [(ngModel)]="offersListFiltersModel.rangeTo"
+              #rangeTo="ngModel"
+              (focusout)="filter()">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Technologies</mat-label>
+          <mat-select
+              multiple
+              [(value)]="offersListFiltersModel.technologies"
+              (selectionChange)="technologyChanged()">
+            <mat-option
+              *ngFor="let technology of technologies"
+              [value]="technology">{{technology}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <mat-chip-listbox>
+            <ng-container *ngFor="let level of experienceLevel">
+              <mat-chip-option
+                (click)="changedExperience(level)"
+                [ngStyle]="offersListFiltersModel.experienceLevel === level ? {'background-color': 'dodgerblue'} : {'background-color': 'lightgrey'}">
+                {{level}}
+              </mat-chip-option>
+            </ng-container>
+          </mat-chip-listbox>
+        </div>
+      </div>
+      <ng-container *ngIf="isCompanyMode">
+        <hr/>
+        <div class="row" style="margin-top: 15px;">
+          <div class="col-md-6">
+            <mat-form-field appearance="outline">
+              <mat-label>Status</mat-label>
+              <mat-select [(value)]="offersListFiltersModel.status" (selectionChange)="filter()">
+                <mat-option [value]="undefined"></mat-option>
+                <mat-option *ngFor="let status of offersStatuses" [value]="status">{{status}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-slide-toggle
+              name="onlyMine"
+              [(ngModel)]="offersListFiltersModel.isMine"
+              (change)="filter()">Only mine</mat-slide-toggle>
+          </div>
+        </div>
+      </ng-container>
+      <app-confirm-button></app-confirm-button>
+      <button
+        type="button"
+        mat-icon-button
+        class="btn-clear"
+        matTooltip="Clear filters"
+        (click)="clearFilters()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </form>
+  </div>
+</div>

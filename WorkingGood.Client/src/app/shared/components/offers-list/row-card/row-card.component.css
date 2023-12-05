@@ -1,0 +1,28 @@
+.row-card{
+  border-width: 2px;
+  border-style: solid;
+  border-color: lightgray;
+  border-radius: 20px;
+  min-height: 130px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: ghostwhite;
+}
+
+.row-card:hover{
+  background-color: white;
+}
+
+.row-card-button{
+  margin-left: 10px;
+  float: right
+}
+
+.info-icons{
+  margin-right: 20px;
+  padding: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: lightgray;
+  font-size: 15px;
+}

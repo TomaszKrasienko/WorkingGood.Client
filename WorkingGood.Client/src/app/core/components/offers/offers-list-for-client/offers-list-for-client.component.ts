@@ -6,16 +6,17 @@ import {OffersListFilterModel} from "../../../../shared/models/offersListFilter.
 import {of} from "rxjs";
 
 @Component({
-  selector: 'app-offers-list',
-  templateUrl: './offers-list.component.html',
-  styleUrls: ['./offers-list.component.css']
+  selector: 'app-offers-list-for-client',
+  templateUrl: './offers-list-for-client.component.html',
+  styleUrls: ['./offers-list-for-client.component.css']
 })
-export class OffersListComponent implements OnInit {
+export class OffersListForClientComponent implements OnInit {
   sideNavOpened: boolean = false;
   paginationLength: number = 100;
   paginationPageSize: number = 15;
   paginationPageIndex: number = 0;
   activeOffersList: OfferIdentity[] = [];
+  offersListFilter?: OffersListFilterModel;
 
   constructor(private _offersService: OffersService) { }
 
@@ -31,6 +32,10 @@ export class OffersListComponent implements OnInit {
 
   filterOffers(offersListFilter: OffersListFilterModel): void{
     console.log(offersListFilter);
+    this.offersListFilter = offersListFilter;
+  }
+
+  confirmFilters(): void{
     this.sideNavOpened = !this.sideNavOpened;
   }
 

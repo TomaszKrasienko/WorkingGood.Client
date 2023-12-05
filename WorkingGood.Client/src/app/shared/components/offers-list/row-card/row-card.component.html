@@ -1,0 +1,45 @@
+<div class="row" class="row-card" (click)="redirectToDetails()">
+  <div class="row" style="margin-top: 10px; margin-left: 10px;">
+    <div class="col-md-7">
+      <h2>{{offer?.title}}</h2>
+    </div>
+    <div class="col-md-3">
+      <div
+        *ngIf="offer?.ContractSalaryRangeMin !== undefined &&
+            offer?.ContractSalaryRangeMax !== undefined">
+        <i class="bi bi-coin"></i> Contract: {{offer?.ContractSalaryRangeMin}} - {{offer?.ContractSalaryRangeMax}} PLN
+      </div>
+      <div
+        *ngIf="offer?.B2BSalaryRangeMin !== undefined &&
+            offer?.B2BSalaryRangeMax !== undefined">
+        <i class="bi bi-coin"></i> B2B: {{offer?.B2BSalaryRangeMin}} - {{offer?.B2BSalaryRangeMax}} PLN
+      </div>
+    </div>
+    <div class="col-md-2 text-end">
+      <ng-container *ngIf="!isForEmployees">
+        <button mat-icon-button matTooltip="Save" [matTooltipPosition]="'above'">
+          <mat-icon>bookmark_border</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Apply" [matTooltipPosition]="'above'">
+          <mat-icon>input</mat-icon>
+        </button>
+      </ng-container>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 10px; margin-left: 10px;">
+    <div class="col-md-12">
+      <span class="info-icons">
+        <i class="bi bi-building"></i> {{offer?.companyName}}
+      </span>
+      <span class="info-icons">
+        <i class="bi bi-person"></i> {{offer?.position?.name}}
+      </span>
+      <span class="info-icons">
+        <i class="bi bi-graph-up"></i> {{offer?.position?.level}}
+      </span>
+      <span class="info-icons">
+        <i class="bi bi-graph-up"></i> {{offer?.type}}
+      </span>
+    </div>
+  </div>
+</div>
